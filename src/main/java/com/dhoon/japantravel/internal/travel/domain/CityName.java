@@ -4,5 +4,8 @@ public enum CityName {
     TOKYO,
     OSAKA,
     NAGOYA,
-    KYOTO
+    KYOTO,
+
+    KANAZAWA,
+    YUFUIN
 }

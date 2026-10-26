@@ -1,6 +1,6 @@
 package com.dhoon.japantravel.internal.travel.domain;
 
 public enum CityType {
-    LARGET_CITE,
+    LARGE_CITY,
     SMALL_CITY
 }

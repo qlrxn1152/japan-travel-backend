@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TravelRecommendRequestDto {
 
-    @Size(min = 1, max = 12)
+    @Min(1)
+    @Min(12)
     private int travelMonth;
 
     @NotNull
