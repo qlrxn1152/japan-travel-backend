@@ -8,7 +8,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "destination")
+@Table(
+        name = "destination",
+        uniqueConstraints = @UniqueConstraint(name = "uq_destination_city_name", columnNames = "city_name")
+)
 public class Destination {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
