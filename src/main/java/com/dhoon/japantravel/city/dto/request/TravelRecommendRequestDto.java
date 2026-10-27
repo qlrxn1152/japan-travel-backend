@@ -1,4 +1,4 @@
-package com.dhoon.japantravel.city.request.dto;
+package com.dhoon.japantravel.city.dto.request;
 
 import com.dhoon.japantravel.city.domain.CityType;
 import jakarta.validation.constraints.Min;

@@ -27,6 +27,7 @@ public class City {
     @Column(name = "recommend_max_days")
     private int recommendMaxDays;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "city_type", nullable = false)
     private CityType cityType;
 

@@ -1,7 +1,8 @@
 package com.dhoon.japantravel.city.controller;
 
 import com.dhoon.japantravel.city.domain.City;
-import com.dhoon.japantravel.city.request.dto.TravelRecommendRequestDto;
+import com.dhoon.japantravel.city.dto.request.TravelRecommendRequestDto;
+import com.dhoon.japantravel.city.dto.response.TravelRecommendCitiesResponseDto;
 import com.dhoon.japantravel.city.service.JapanTravelService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +23,8 @@ public class JapanTravelController {
 
 
     @PostMapping("/api/recommend")
-    public ResponseEntity<List<City>> recommend(@Valid @RequestBody TravelRecommendRequestDto requestDto) {
-        List<City> response = service.recommend(requestDto);
+    public ResponseEntity<TravelRecommendCitiesResponseDto> recommend(@Valid @RequestBody TravelRecommendRequestDto requestDto) {
+        TravelRecommendCitiesResponseDto response = service.recommend(requestDto);
 
         return ResponseEntity.ok(response);
     }
