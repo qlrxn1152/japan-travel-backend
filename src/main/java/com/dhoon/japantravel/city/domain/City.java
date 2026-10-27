@@ -21,10 +21,10 @@ public class City {
     @Column(name = "city_name", nullable = false)
     private String cityName;
 
-    @Column(name = "recommend_min_days")
+    @Column(name = "recommend_min_days", nullable = false)
     private int recommendMinDays;
 
-    @Column(name = "recommend_max_days")
+    @Column(name = "recommend_max_days", nullable = false)
     private int recommendMaxDays;
 
     @Enumerated(EnumType.STRING)
