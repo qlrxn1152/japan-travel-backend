@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
 @Slf4j
@@ -21,8 +20,7 @@ public class JapanTravelController {
 
     private final JapanTravelService service;
 
-
-    @PostMapping("/api/recommend")
+    @PostMapping("/api/travel/recommend")
     public ResponseEntity<TravelRecommendCitiesResponseDto> recommend(@Valid @RequestBody TravelRecommendRequestDto requestDto) {
         TravelRecommendCitiesResponseDto response = service.recommend(requestDto);
 

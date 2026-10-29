@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CityRepository extends JpaRepository<City, Long> {
 
-    List<City> findByCityType(CityType cityType);
+    List<City> findAllByCityType(CityType cityType);
 }

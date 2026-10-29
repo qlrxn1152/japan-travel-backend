@@ -1,6 +1,7 @@
 package com.dhoon.japantravel.city.service;
 
 import com.dhoon.japantravel.city.domain.City;
+import com.dhoon.japantravel.city.domain.CityType;
 import com.dhoon.japantravel.city.dto.response.TravelRecommendCitiesResponseDto;
 import com.dhoon.japantravel.city.dto.response.TravelRecommendCityResponseDto;
 import com.dhoon.japantravel.city.repository.CityRepository;
@@ -22,31 +23,28 @@ public class JapanTravelService {
     private final CityRepository cityRepository;
 
     public TravelRecommendCitiesResponseDto recommend(TravelRecommendRequestDto requestDto) {
-        List<City> sameCityTypeCities = cityRepository.findByCityType(requestDto.getCityType());
 
-        int clientTripDays = requestDto.getTripDays();
+        CityType requestCityType = requestDto.getCityType();
+        int requestTripDays = requestDto.getTripDays();
 
-        sameCityTypeCities.sort(
-                Comparator.comparingInt(city -> calculateDayDifference(city, clientTripDays))
-        );
-
-        List<TravelRecommendCityResponseDto> listCities = sameCityTypeCities.stream()
+        List<TravelRecommendCityResponseDto> listCities = cityRepository.findAllByCityType(requestCityType)
+                .stream()
+                .sorted(
+                        Comparator.comparingInt((City city) -> calculate(city, requestTripDays))
+                                .thenComparingInt(City::getRecommendTripDays)
+                )
                 .map(TravelRecommendCityResponseDto::of)
                 .toList();
 
         return TravelRecommendCitiesResponseDto.of(listCities);
     }
 
-    private int calculateDayDifference(City city, int tripDays) {
-        if (tripDays < city.getRecommendMinDays()) {
-            return city.getRecommendMinDays() - tripDays;
-        }
+    private int calculate(City city, int requestTripDays) {
+        int recommendTripDays = city.getRecommendTripDays();
 
-        if (tripDays > city.getRecommendMaxDays()) {
-            return tripDays - city.getRecommendMaxDays();
-        }
-
-        return 0;
+        return Math.abs(recommendTripDays - requestTripDays);
     }
+
+
 
 }

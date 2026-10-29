@@ -13,15 +13,13 @@ import lombok.NoArgsConstructor;
 public class TravelRecommendCityResponseDto {
 
     private String cityName;
-    private int recommendMinDays;
-    private int recommendMaxDays;
+    private int recommendTripDays;
     private CityType cityType;
 
     public static TravelRecommendCityResponseDto of(City city) {
         return new TravelRecommendCityResponseDto(
                 city.getCityName(),
-                city.getRecommendMinDays(),
-                city.getRecommendMaxDays(),
+                city.getRecommendTripDays(),
                 city.getCityType()
         );
     }

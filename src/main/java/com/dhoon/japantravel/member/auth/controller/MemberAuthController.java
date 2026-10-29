@@ -34,4 +34,5 @@ public class MemberAuthController {
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
+
 }

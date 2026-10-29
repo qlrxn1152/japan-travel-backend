@@ -38,6 +38,11 @@ public class SecurityConfig {
                                 "/api/auth/login"
                         ).permitAll()
 
+                        .requestMatchers(
+                                "/api/recommend"
+                        )
+                        .permitAll()
+
                         .anyRequest().authenticated()
                 )
 

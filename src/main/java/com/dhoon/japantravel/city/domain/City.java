@@ -21,26 +21,20 @@ public class City {
     @Column(name = "city_name", nullable = false)
     private String cityName;
 
-    @Column(name = "recommend_min_days", nullable = false)
-    private int recommendMinDays;
-
-    @Column(name = "recommend_max_days", nullable = false)
-    private int recommendMaxDays;
+    @Column(name = "recommend_trip_days", nullable = false)
+    private int recommendTripDays;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "city_type", nullable = false)
     private CityType cityType;
 
-    public static City createCity(String cityName, int recommendMinDays, int recommendMaxDays, CityType cityType) {
-        return new City(cityName, recommendMinDays, recommendMaxDays, cityType);
+    public static City createCity(String cityName, int recommendTripDays, CityType cityType) {
+        return new City(cityName, recommendTripDays, cityType);
     }
 
-
-
-    private City(String cityName, int recommendMinDays, int recommendMaxDays, CityType cityType) {
+    private City(String cityName, int recommendTripDays, CityType cityType) {
         this.cityName = cityName;
-        this.recommendMinDays = recommendMinDays;
-        this.recommendMaxDays = recommendMaxDays;
+        this.recommendTripDays = recommendTripDays;
         this.cityType = cityType;
     }
 }
